@@ -1,0 +1,1 @@
+TRUNCATE Table "kabupaten_kota"

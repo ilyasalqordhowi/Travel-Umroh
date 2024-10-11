@@ -1,0 +1,21 @@
+CREATE TABLE "jamaah"(
+    "id" SERIAL PRIMARY KEY,
+    "nama_lengkap" VARCHAR(225),
+    "nik" INT,
+    "tempat_lahir"VARCHAR(225),
+    "tanggal_lahir" DATE NOT NULL,
+    "alamat" VARCHAR(225),
+    "provinsi_id"  int references "provinsi"("id"),
+    "kabupaten_kota_id"  int references "kabupaten_kota"("id"),
+    "jenis_kelamin" INT,
+    "no_paspor" VARCHAR(225),
+    "masa_berlaku_paspor" DATE NOT NULL,
+    "lampiran_ktp" TEXT,
+    "lampiran_kk" TEXT,
+    "lampiran_foto_diri" TEXT,
+    "lampiran_paspor" TEXT,
+    "no_visa" TEXT,
+    "berlaku_sampai" DATE,
+    "paket_id"  int references "paket"("id"),
+    "kamar_id"  int references "kamar"("id")
+);
