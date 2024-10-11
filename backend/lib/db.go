@@ -10,7 +10,7 @@ import (
 func DB() *pgx.Conn {
 	conn, err := pgx.Connect(
 		context.Background(),
-		"postgresql://postgres:1@103.93.58.89:54329/backend_travel?sslmode=disable",
+		"postgresql://postgres:1@103.93.58.89:54328/backend_travel?sslmode=disable",
 	)
 	if err != nil {
 		fmt.Println(err)

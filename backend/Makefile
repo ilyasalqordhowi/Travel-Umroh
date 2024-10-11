@@ -1,5 +1,5 @@
 host ?= 103.93.58.89
-port ?= 54329
+port ?= 54328
 user ?= postgres
 pass ?= 1
 db ?= backend_travel
