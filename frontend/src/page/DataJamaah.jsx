@@ -30,10 +30,10 @@ function DataJamaah() {
   return (
     <>
       <Navbar />
-      <div className="flex">
+      <div className="flex flex-col md:flex-row">
         <Sidebar />
-        <div className="flex flex-col p-10 gap-10 bg-blue-500 w-full">
-          <h1 className="text-[20px]">Data Jamaah</h1>
+        <div className="flex flex-col p-5 md:p-10 gap-5 bg-blue-500 w-full">
+          <h1 className="text-[20px] md:text-[24px]">Data Jamaah</h1>
           <div>
             <button
               onClick={btnTambah}
@@ -43,54 +43,48 @@ function DataJamaah() {
               <h2>Tambah data</h2>
             </button>
           </div>
-          <table className="table-auto border">
-            <thead>
-              <tr className="border-b">
-                <th className="p-2">Nama</th>
-                <th className="p-2">NIK</th>
-                <th className="p-2">Tempat Lahir</th>
-                <th className="p-2">Tanggal Lahir</th>
-                <th className="p-2">Alamat</th>
-                <th className="p-2">Preview</th>
-                <th className="p-2">Edit & Delete</th>
-              </tr>
-            </thead>
-            <tbody>
-              {Array.isArray(jamaahList) &&
-                jamaahList.map((jamaah) => (
-                  <tr key={jamaah.id} className="border-t">
-                    <td className="p-2 items-center text-center">
-                      {jamaah.nama_lengkap}
-                    </td>
-                    <td className="p-2 items-center text-center">
-                      {jamaah.nik}
-                    </td>
-                    <td className="p-2 items-center text-center">
-                      {jamaah.tempat_lahir}
-                    </td>
-                    <td className="p-2 items-center text-center">
-                      {jamaah.tanggal_lahir}
-                    </td>
-                    <td className="p-2 items-center text-center">
-                      {jamaah.alamat}
-                    </td>
-                    <td className="p-2 items-center text-center">
-                      <button>
-                        <FaIdCardClip />
-                      </button>
-                    </td>
-                    <td className="p-2 flex justify-center gap-10 items-center text-center">
-                      <button className="text-orange-500">
-                        <FaMarker />
-                      </button>
-                      <button className="text-red-600">
-                        <FaTrashCan />
-                      </button>
-                    </td>
-                  </tr>
-                ))}
-            </tbody>
-          </table>
+          <div className="overflow-x-auto">
+            <table className="table-auto border w-full">
+              <thead>
+                <tr className="border-b">
+                  <th className="p-2 text-left">Nama</th>
+                  <th className="p-2 text-left">NIK</th>
+                  <th className="p-2 text-left">Tempat Lahir</th>
+                  <th className="p-2 text-left">Tanggal Lahir</th>
+                  <th className="p-2 text-left">Alamat</th>
+                  <th className="p-2 text-center">Preview</th>
+                  <th className="p-2 text-center">Edit & Delete</th>
+                </tr>
+              </thead>
+              <tbody>
+                {Array.isArray(jamaahList) &&
+                  jamaahList.map((jamaah) => (
+                    <tr key={jamaah.id} className="border-t">
+                      <td className="p-2 text-center">{jamaah.nama_lengkap}</td>
+                      <td className="p-2 text-center">{jamaah.nik}</td>
+                      <td className="p-2 text-center">{jamaah.tempat_lahir}</td>
+                      <td className="p-2 text-center">
+                        {jamaah.tanggal_lahir}
+                      </td>
+                      <td className="p-2 text-center">{jamaah.alamat}</td>
+                      <td className="p-2 text-center">
+                        <button>
+                          <FaIdCardClip />
+                        </button>
+                      </td>
+                      <td className="p-2 flex justify-center gap-5">
+                        <button className="text-orange-500">
+                          <FaMarker />
+                        </button>
+                        <button className="text-red-600">
+                          <FaTrashCan />
+                        </button>
+                      </td>
+                    </tr>
+                  ))}
+              </tbody>
+            </table>
+          </div>
         </div>
         {!add && <FormJamaah onClose={btnTambah} />}
       </div>

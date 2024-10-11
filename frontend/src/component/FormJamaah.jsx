@@ -35,13 +35,13 @@ function FormJamaah({ onClose }) {
 
   useEffect(() => {
     axios
-      .get("http://localhost:8888/provinsi")
+      .get("http://103.93.58.89:20203//provinsi")
       .then((res) => setProvinsiList(res.data));
     axios
-      .get("http://localhost:8888/paket")
+      .get("http://103.93.58.89:20203//paket")
       .then((res) => setPaketList(res.data));
     axios
-      .get("http://localhost:8888/kamar")
+      .get("http://103.93.58.89:20203//kamar")
       .then((res) => setKamarList(res.data));
   }, []);
 
@@ -74,9 +74,9 @@ function FormJamaah({ onClose }) {
   return (
     <>
       <div className="flex items-center justify-center fixed bg-black/25 w-full h-full top-0">
-        <div className="p-6 max-w-4xl mx-auto">
+        <div className="p-4 max-w-4xl mx-auto w-full">
           <form
-            className="bg-white p-6 rounded shadow-md"
+            className="bg-white p-4 rounded shadow-md"
             onSubmit={handleSubmit}
           >
             <div className="flex justify-between items-center">
@@ -85,45 +85,44 @@ function FormJamaah({ onClose }) {
                 <FaXmark />
               </button>
             </div>
-            <div className="grid grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <input
                 type="text"
                 name="namaLengkap"
                 placeholder="Nama Lengkap"
-                className="border p-2"
+                className="border p-2 w-full"
                 onChange={handleChange}
               />
               <input
                 type="number"
                 name="nik"
                 placeholder="NIK"
-                className="border p-2"
+                className="border p-2 w-full"
                 onChange={handleChange}
               />
               <input
                 type="text"
                 name="tempatLahir"
                 placeholder="Tempat Lahir"
-                className="border p-2"
+                className="border p-2 w-full"
                 onChange={handleChange}
               />
               <input
                 type="date"
                 name="tanggalLahir"
-                className="border p-2"
+                className="border p-2 w-full"
                 onChange={handleChange}
               />
               <textarea
                 name="alamat"
                 placeholder="Alamat"
-                className="border p-2 col-span-2"
+                className="border p-2 col-span-2 w-full"
                 onChange={handleChange}
               />
 
-              {/* Dropdown Provinsi */}
               <select
                 name="provinsi"
-                className="border p-2"
+                className="border p-2 w-full"
                 onChange={handleChange}
               >
                 <option value="" disabled>
@@ -136,10 +135,9 @@ function FormJamaah({ onClose }) {
                 ))}
               </select>
 
-              {/* Dropdown Kabupaten */}
               <select
                 name="kabupaten"
-                className="border p-2"
+                className="border p-2 w-full"
                 onChange={handleChange}
               >
                 <option value="" disabled>
@@ -152,8 +150,7 @@ function FormJamaah({ onClose }) {
                 ))}
               </select>
 
-              {/* Radio Button Jenis Kelamin */}
-              <div className="flex gap-4 col-span-2">
+              <div className="flex gap-4 col-span-2 w-full">
                 <label>
                   <input
                     type="radio"
@@ -178,39 +175,38 @@ function FormJamaah({ onClose }) {
                 type="text"
                 name="noPaspor"
                 placeholder="No Paspor"
-                className="border p-2"
+                className="border p-2 w-full"
                 onChange={handleChange}
               />
               <input
                 type="date"
                 name="masaBerlakuPaspor"
-                className="border p-2"
+                className="border p-2 w-full"
                 onChange={handleChange}
               />
 
-              {/* Upload Lampiran */}
               <input
                 type="file"
                 name="lampiranKtp"
-                className="border p-2"
+                className="border p-2 w-full"
                 onChange={handleChange}
               />
               <input
                 type="file"
                 name="lampiranKk"
-                className="border p-2"
+                className="border p-2 w-full"
                 onChange={handleChange}
               />
               <input
                 type="file"
                 name="lampiranFotoDiri"
-                className="border p-2"
+                className="border p-2 w-full"
                 onChange={handleChange}
               />
               <input
                 type="file"
                 name="lampiranPaspor"
-                className="border p-2"
+                className="border p-2 w-full"
                 onChange={handleChange}
               />
 
@@ -218,20 +214,19 @@ function FormJamaah({ onClose }) {
                 type="text"
                 name="noVisa"
                 placeholder="No Visa (Opsional)"
-                className="border p-2"
+                className="border p-2 w-full"
                 onChange={handleChange}
               />
               <input
                 type="date"
                 name="berlakuSampai"
-                className="border p-2"
+                className="border p-2 w-full"
                 onChange={handleChange}
               />
 
-              {/* Dropdown Paket */}
               <select
                 name="paketDipilih"
-                className="border p-2"
+                className="border p-2 w-full"
                 onChange={handleChange}
               >
                 <option value="" disabled>
@@ -246,7 +241,7 @@ function FormJamaah({ onClose }) {
 
               <select
                 name="kamar"
-                className="border p-2"
+                className="border p-2 w-full"
                 onChange={handleChange}
               >
                 <option value="" disabled>
@@ -261,7 +256,7 @@ function FormJamaah({ onClose }) {
             </div>
             <button
               type="submit"
-              className="mt-4 bg-blue-500 text-white px-4 py-2 rounded"
+              className="mt-4 bg-blue-500 text-white px-4 py-2 rounded w-full"
             >
               Simpan Data
             </button>
