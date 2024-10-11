@@ -6,7 +6,7 @@ export const DELETE_JAMAAH = "DELETE_JAMAAH";
 export const GET_JAMAAH = "GET_JAMAAH";
 export const GET_ALL_JAMAAH = "GET_ALL_JAMAAH";
 
-const API_BASE_URL = "http://localhost:8888/jamaah";
+const API_BASE_URL = "http://103.93.58.89:21219/jamaah";
 
 export const createJamaah = (data) => async (dispatch) => {
   const response = await axios.post(`${API_BASE_URL}/create`, data);

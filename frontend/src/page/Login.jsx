@@ -57,7 +57,7 @@ function Login() {
     const formData = new URLSearchParams();
     formData.append("email", email);
     formData.append("password", password);
-    const dataLogin = await fetch("http://localhost:8888/auth/login", {
+    const dataLogin = await fetch("http://103.93.58.89:21219/auth/login", {
       method: "POST",
       body: formData,
     });
