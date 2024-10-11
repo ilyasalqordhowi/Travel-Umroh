@@ -1,13 +1,11 @@
-
 FROM golang:1.23-alpine
 
 WORKDIR /app
 
-COPY . .
+COPY . /app/
 
-RUN go mod tidy
-
-
-RUN go build -o backend-app
+RUN go mod tidy && go build -o binary
 
 EXPOSE 8888
+
+ENTRYPOINT [ "/app/binary" ]
