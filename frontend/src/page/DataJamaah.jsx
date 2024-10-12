@@ -4,29 +4,32 @@ import Navbar from "../component/Navbar";
 import { FaPlus, FaMarker, FaIdCardClip, FaTrashCan } from "react-icons/fa6";
 import FormJamaah from "../component/FormJamaah";
 import { useSelector, useDispatch } from "react-redux";
-import { getAllJamaah } from "../redux/actions/jamaah";
 import { useNavigate } from "react-router-dom";
+import jamaah, { addJamaah } from "../redux/reducers/jamaah";
 
 function DataJamaah() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const [add, setAdd] = React.useState(true);
   const token = useSelector((state) => state.auth.token);
-  const jamaahList = useSelector((state) => state.jamaah.allJamaah);
-  console.log(jamaahList, "ini list");
-  console.log(token, "ini data token");
+  console.log(token, "ini adlah token");
+  const jamaahList = useSelector((state) => state.jamaah.data);
+  console.log(jamaahList, "ini adalah data");
   if (token === null) {
     navigate("/");
   }
-
-  React.useEffect(() => {
-    dispatch(getAllJamaah());
-  }, [dispatch]);
-
   function btnTambah() {
     setAdd(!add);
   }
 
+  React.useEffect(() => {
+    async function Data() {
+      const response = await fetch("http://103.93.58.89:21219/jamaah");
+      const json = await response.json();
+      dispatch(addJamaah(json.results));
+    }
+    Data();
+  }, []);
   return (
     <>
       <Navbar />
@@ -57,31 +60,28 @@ function DataJamaah() {
                 </tr>
               </thead>
               <tbody>
-                {Array.isArray(jamaahList) &&
-                  jamaahList.map((jamaah) => (
-                    <tr key={jamaah.id} className="border-t">
-                      <td className="p-2 text-center">{jamaah.nama_lengkap}</td>
-                      <td className="p-2 text-center">{jamaah.nik}</td>
-                      <td className="p-2 text-center">{jamaah.tempat_lahir}</td>
-                      <td className="p-2 text-center">
-                        {jamaah.tanggal_lahir}
-                      </td>
-                      <td className="p-2 text-center">{jamaah.alamat}</td>
-                      <td className="p-2 text-center">
-                        <button>
-                          <FaIdCardClip />
-                        </button>
-                      </td>
-                      <td className="p-2 flex justify-center gap-5">
-                        <button className="text-orange-500">
-                          <FaMarker />
-                        </button>
-                        <button className="text-red-600">
-                          <FaTrashCan />
-                        </button>
-                      </td>
-                    </tr>
-                  ))}
+                {jamaahList.map((jamaah) => (
+                  <tr key={jamaah.id} className="border-t">
+                    <td className="p-2 text-center">{jamaah.nama_lengkap}</td>
+                    <td className="p-2 text-center">{jamaah.nik}</td>
+                    <td className="p-2 text-center">{jamaah.tempat_lahir}</td>
+                    <td className="p-2 text-center">{jamaah.tanggal_lahir}</td>
+                    <td className="p-2 text-center">{jamaah.alamat}</td>
+                    <td className="p-2 text-center">
+                      <button>
+                        <FaIdCardClip />
+                      </button>
+                    </td>
+                    <td className="p-2 flex justify-center gap-5">
+                      <button className="text-orange-500">
+                        <FaMarker />
+                      </button>
+                      <button className="text-red-600">
+                        <FaTrashCan />
+                      </button>
+                    </td>
+                  </tr>
+                ))}
               </tbody>
             </table>
           </div>
