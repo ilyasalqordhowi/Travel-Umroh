@@ -33,7 +33,7 @@ function DataJamaah() {
   return (
     <>
       <Navbar />
-      <div className="flex flex-col md:flex-row">
+      <div className="flex">
         <Sidebar />
         <div className="flex flex-col p-5 md:p-10 gap-5 bg-blue-500 w-full">
           <h1 className="text-[20px] md:text-[24px]">Data Jamaah</h1>
